@@ -1,0 +1,112 @@
+[
+    {
+        "id": "6eafe6e23644f5df",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "2321200af84aa20c",
+        "type": "inject",
+        "z": "6eafe6e23644f5df",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 120,
+        "wires": [
+            [
+                "c11da3f6f4400a85"
+            ]
+        ]
+    },
+    {
+        "id": "b9b2f8fd9d983185",
+        "type": "debug",
+        "z": "6eafe6e23644f5df",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 530,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "c11da3f6f4400a85",
+        "type": "function",
+        "z": "6eafe6e23644f5df",
+        "name": "",
+        "func": "// Lo que está después de “//” son comentarios\n// Crea un objeto Date a partir del payload enviado por timestamp\nvar date = new Date(msg.payload);\n// Cambia el payload para que sea una fecha con formato\nmsg.payload = date.toString();\n// Regresa el mensaje para que se envíe al sigueinte nodo\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 120,
+        "wires": [
+            [
+                "b9b2f8fd9d983185",
+                "fbba7bf6021718e1"
+            ]
+        ]
+    },
+    {
+        "id": "fbba7bf6021718e1",
+        "type": "ui_text",
+        "z": "6eafe6e23644f5df",
+        "group": "d1559f8678754d2e",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Fecha - Label",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "x": 580,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "d1559f8678754d2e",
+        "type": "ui_group",
+        "name": "Fecha Actual - Grupo ",
+        "tab": "7f5a84bc4200af71",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "7f5a84bc4200af71",
+        "type": "ui_tab",
+        "name": "Flow2-Fecha",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
